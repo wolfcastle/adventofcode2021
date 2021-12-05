@@ -18,11 +18,15 @@ lines = [line.strip() for line in open("input")]
 
 for line in lines:
     coords = list(map(tuple,map(lambda s: s.split(","), map(lambda s: s.strip(), line.split("->")))))
-    if coords[0][0] == coords[1][0]:
+    x1 = int(coords[0][0])
+    y1 = int(coords[0][1])
+    x2 = int(coords[1][0])
+    y2 = int(coords[1][1])
+    if x1 == x2:
         # vertical, x co-ords same
-        markVertical(int(coords[0][0]), int(coords[0][1]), int(coords[1][1]))
-    elif coords[0][1] == coords[1][1]:
+        markVertical(x1, y1, y2)
+    elif y1 == y2:
         # horizontal, y co-ords same
-        markHorizontal(int(coords[0][1]), int(coords[0][0]), int(coords[1][0]))
+        markHorizontal(y1, x1, x2)
 
 print( len([p for p in grid if p > 1]))
